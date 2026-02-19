@@ -1,0 +1,100 @@
+/* ── iPod Shell ────────────────────────────────────────────── */
+
+#base {
+    z-index: 2;
+    filter: none;
+    transform: translateZ(1px);
+    backface-visibility: hidden;
+}
+
+#base svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ── Screen Content ───────────────────────────────────────── */
+
+#ipod-screen-content {
+    position: absolute;
+    top: calc(var(--u) * 1.5);
+    left: calc(var(--u) * 1.5);
+    width: calc(100% - var(--u) * 3);
+    height: calc(100% - var(--u) * 2.5);
+    background: #fff;
+    color: #000;
+    font-family: "Myriad Pro", "Source Sans 3", "Source Sans Pro", "Gill Sans", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: calc(var(--u) * 6);
+    transform: translateZ(2px);
+    backface-visibility: hidden;
+}
+
+/* ── Click Wheel ──────────────────────────────────────────── */
+
+#control-wheel {
+    clip-path: circle(50%);
+    transform: translateZ(3px);
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+/* Wheel press gradients — directional lighting shift */
+#control-wheel.rock-next #wheel .stroke-path {
+    stroke: url(#wheel-rock-next);
+}
+
+#control-wheel.rock-prev #wheel .stroke-path {
+    stroke: url(#wheel-rock-prev);
+}
+
+#control-wheel.rock-menu #wheel .stroke-path {
+    stroke: url(#wheel-rock-menu);
+}
+
+#control-wheel.rock-play-pause #wheel .stroke-path {
+    stroke: url(#wheel-rock-play);
+}
+
+/* ── Center Button ────────────────────────────────────────── */
+
+#mid-button {
+    transition: transform 0.02s ease-in-out, filter 0.02s ease-in-out;
+}
+
+#mid-button.pressed {
+    transform: scale(0.98) !important;
+    filter: brightness(0.9);
+}
+
+#mid-button.pressed .stroke-path {
+    stroke: url(#mid-rock-play);
+}
+
+/* ── Hit Area Expansion ───────────────────────────────────── */
+
+#menu,
+#next,
+#prev,
+#play-pause {
+    overflow: visible;
+}
+
+#menu::after,
+#next::after,
+#prev::after,
+#play-pause::after {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    right: -30px;
+    bottom: -30px;
+}
+
+/* ── Stroke Transition ────────────────────────────────────── */
+
+.item.interactive .stroke-path {
+    transition: stroke 0.1s ease;
+}

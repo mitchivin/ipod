@@ -1,0 +1,94 @@
+/* ── Menu View ─────────────────────────────────────────────── */
+
+#menu-view {
+    flex-grow: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ── Slide Transition ─────────────────────────────────────── */
+
+#menu-slider {
+    display: flex;
+    width: 200%;
+    min-width: 200%;
+    flex-shrink: 0;
+    height: 100%;
+    transition: transform 0.3s ease-out;
+    transform: translateX(0);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.menu-pane {
+    flex: 0 0 50%;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+    background: #fff;
+}
+
+/* ── Menu Items ───────────────────────────────────────────── */
+
+.menu-item {
+    width: 100%;
+    padding: calc(var(--u) * 4) calc(var(--u) * 12);
+    font-size: calc(var(--u) * 15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    border-bottom: calc(var(--u) * 1) solid #eee;
+    will-change: transform;
+    letter-spacing: calc(var(--u) * -0.4);
+}
+
+.menu-item span:first-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    margin-right: calc(var(--u) * 8);
+}
+
+/* ── Selected State (Blue Highlight) ──────────────────────── */
+
+.menu-item.selected {
+    background: linear-gradient(to bottom, #4a8df3 0%, #2f7cf1 45%, #186bf0 50%, #155dd5 100%);
+    color: #fff;
+    border-bottom: calc(var(--u) * 1) solid transparent;
+}
+
+.menu-item .arrow {
+    font-size: calc(var(--u) * 20);
+    color: #888;
+    margin-right: calc(var(--u) * -4);
+}
+
+.menu-item.selected .arrow {
+    color: #fff;
+}
+
+.menu-item .value {
+    font-size: calc(var(--u) * 13);
+    color: #888;
+    font-weight: 500;
+}
+
+.menu-item.selected .value {
+    color: #fff;
+}
+
+/* ── Disabled State ───────────────────────────────────────── */
+
+.menu-item.disabled {
+    color: #bbb;
+    pointer-events: none;
+}
+
+.menu-item.disabled .arrow {
+    color: #ccc;
+}

@@ -1,0 +1,164 @@
+[
+    {
+        "id": 1,
+        "title": "Business",
+        "artist": "Eminem",
+        "album": "The Eminem Show",
+        "src": "public/music/eminem_business.mp3",
+        "artwork": "public/covers/eminem_business.jpg",
+        "rating": 3
+    },
+    {
+        "id": 2,
+        "title": "Dedicate",
+        "artist": "Lil Wayne",
+        "album": "Tha Carter V",
+        "src": "public/music/lilwayne_dedicate.mp3",
+        "artwork": "public/covers/lilwayne_dedicate.jpg",
+        "rating": 4
+    },
+    {
+        "id": 3,
+        "title": "Sand in Turks",
+        "artist": "Lil Mabu",
+        "album": "SCHEME",
+        "src": "public/music/lilmabu_sandinturks.mp3",
+        "artwork": "public/covers/lilmabu_sandinturks.jpg",
+        "rating": 5
+    },
+    {
+        "id": 4,
+        "title": "Harder Than You Think",
+        "artist": "Public Enemy",
+        "album": "How You Sell Soul to a Soulless People Who Sold Their Soul?",
+        "src": "public/music/publicenemy_harder.mp3",
+        "artwork": "public/covers/publicenemy_harder.jpg",
+        "rating": 4
+    },
+    {
+        "id": 5,
+        "title": "If I Can't",
+        "artist": "50 Cent",
+        "album": "Get Rich or Die Tryin'",
+        "src": "public/music/50cent_if.mp3",
+        "artwork": "public/covers/50cent_if.jpg",
+        "rating": 3
+    },
+    {
+        "id": 8,
+        "title": "Good Ass Intro (ft BJ The Chicago Kid, Lili K, Kiara Lanier, Peter Cottontale Will for the Omys)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_good.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    },
+    {
+        "id": 9,
+        "title": "Pusha Man (ft Nate Fox & Lili K) (Prod by Ceej for Two9)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_pusha.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    },
+    {
+        "id": 10,
+        "title": "Cocoa Butter Kisses (ft Vic Mensa & Twista) (Prod by Cam for JUSTIC League & Peter Cottont)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_cocoa.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    },
+    {
+        "id": 11,
+        "title": "Juice (Prod by Nate Fox)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_juice.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    },
+    {
+        "id": 12,
+        "title": "Lost (ft Noname Gypsy) (Prod by Nate Fox)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_lost.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    },
+    {
+        "id": 13,
+        "title": "Everybodys Something (ft Saba & BJ The Chicago Kid) (Prod by DJ Ozone)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_everybody.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    },
+    {
+        "id": 14,
+        "title": "Interlude (Thats Love) (Prod by Ludwig Gorransen)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_interlude.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    },
+    {
+        "id": 15,
+        "title": "Favorite Song (ft Childish Gambino) (Prod by Nate Fox)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_favorite.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    },
+    {
+        "id": 16,
+        "title": "NaNa (ft Action Bronson) (Prod by Brandun Deshay)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_nana.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    },
+    {
+        "id": 17,
+        "title": "Smoke Again (ft Ab-Soul) (Prod by Blended Babies)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_smoke.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    },
+    {
+        "id": 18,
+        "title": "Acid Rain (Prod by Jake One)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_acidrain.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    },
+    {
+        "id": 19,
+        "title": "Chain Smoker (Prod by Nate Fox)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_chain.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    },
+    {
+        "id": 20,
+        "title": "Everythings Good (Good Ass Outro) (Prod by Cam for JUSTICE League)",
+        "artist": "Chance the Rapper",
+        "album": "Acid Rap",
+        "src": "public/music/chance_everything.mp3",
+        "artwork": "public/covers/chance_acid.jpg",
+        "rating": 3
+    }
+]

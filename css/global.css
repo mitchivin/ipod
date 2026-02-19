@@ -1,0 +1,144 @@
+/* ── Reset ────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+    background: #0f0f0f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Source Sans 3', sans-serif;
+    position: relative;
+}
+
+/* ── Background Pattern ───────────────────────────────────── */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        repeating-linear-gradient(0deg,
+            rgba(0, 255, 0, 0.06) 0, rgba(0, 255, 0, 0.06) 1px,
+            transparent 1px, transparent 40px),
+        repeating-linear-gradient(90deg,
+            rgba(0, 255, 0, 0.04) 0, rgba(0, 255, 0, 0.04) 1px,
+            transparent 1px, transparent 80px),
+        repeating-linear-gradient(45deg,
+            rgba(255, 100, 0, 0.05) 0, rgba(255, 100, 0, 0.05) 1px,
+            transparent 1px, transparent 160px);
+    background-size: 80px 80px, 160px 160px, 320px 320px;
+}
+
+/* ── iPod Container ───────────────────────────────────────── */
+
+#ipod {
+    position: relative;
+    z-index: 1;
+    --base-width: min(calc(100vw - 40px), calc((100dvh - 140px) * 0.6));
+    width: var(--base-width);
+    height: calc(var(--base-width) / 0.5955);
+    flex-shrink: 0;
+    display: block;
+    --u: calc(var(--base-width) / 371);
+}
+
+/* ── DoodleDev Shell Primitives ───────────────────────────── */
+
+.item {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+}
+
+.item.interactive {
+    pointer-events: auto;
+    cursor: default;
+    touch-action: none;
+    transition: transform 0.05s ease-in-out, filter 0.05s ease-in-out;
+    will-change: transform;
+}
+
+.item.interactive.pressed {
+    transform: scale(0.98) !important;
+}
+
+.shape {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+    background-repeat: no-repeat;
+    background-position: center;
+    image-rendering: auto;
+}
+
+/* ── Blueprint Header & Footer ────────────────────────────── */
+
+.blueprint-header,
+.doodle-disclaimer {
+    font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: default;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+    flex: 0 0 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.blueprint-header .sep,
+.doodle-disclaimer .sep {
+    color: rgba(0, 255, 0, 0.25);
+}
+
+.blueprint-header a,
+.doodle-disclaimer a {
+    color: rgba(0, 255, 0, 0.45);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.4s ease;
+}
+
+.blueprint-header a:hover,
+.doodle-disclaimer a:hover {
+    color: rgba(0, 255, 0, 0.7);
+}
+
+@media (max-width: 400px) {
+
+    .blueprint-header .secondary,
+    .doodle-disclaimer .secondary {
+        display: none;
+    }
+}
