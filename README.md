@@ -1,8 +1,8 @@
-# iPod Classic
+# Interactive iPod Classic
 
 Interactive iPod Classic 5th Generation for the web. Use the click wheel to browse your library and play tracks with zero dependencies.
 
-<img width="1918" height="1079" alt="image" src="https://github.com/user-attachments/assets/1e2cae44-cf6a-4492-b16e-b69517153d7d" />
+<img width="1918" height="1079" alt="image" src="https://github.com/user-attachments/assets/d1ebf1e0-ecfe-4c90-8fbe-ea10e7c3a965" />
 
 ## Overview
 
@@ -28,6 +28,8 @@ The menu system, audio playback, and click wheel interactions were built directl
 - **Shuffle & Repeat**: Fisher-Yates shuffle with repeat one/all modes.
 - **Artwork Loading**: Lazy loading with placeholders for cover art.
 - **Responsive Layout**: Scales to any viewport while maintaining aspect ratio.
+
+<img width="1918" height="1079" alt="image" src="https://github.com/user-attachments/assets/1e2cae44-cf6a-4492-b16e-b69517153d7d" />
 
 ## Project Structure
 
