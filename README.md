@@ -1,17 +1,17 @@
 # iPod Classic
 
-A fully interactive iPod Classic 5th Generation built for the web. Scroll the click wheel, browse your music library, and play tracks — all rendered in the browser with zero dependencies.
+Interactive iPod Classic 5th Generation for the web. Use the click wheel to browse your library and play tracks with zero dependencies.
 
 **[▶ Try it live](https://mitchivin.github.io/ipod/)**
 
-## How It Works
+## Overview
 
-The iPod shell — the aluminium body, click wheel, screen bezel, and button icons — was designed in **[DoodleDev](https://doodledev.app)**, a visual compiler that turns vector designs into production-ready HTML/CSS. This project is available as **Preset 2** inside DoodleDev if you want to explore or remix the shell yourself.
+The iPod shell (aluminium body, click wheel, screen bezel, and button icons) was designed in **[DoodleDev](https://doodledev.app)**, a visual compiler that turns vector designs into production-ready HTML/CSS. You can find this design as **Preset 2** inside DoodleDev.
 
-### Design to Logic
-DoodleDev bridges the gap between high-fidelity design and production engineering. Instead of using AI to guess at a layout or fighting with "vibecoded" slop, developers start with a pixel-perfect, zero-dependency foundation that is clean enough to be adjusted manually or extended with complex logic. 
+### Design and Logic
+DoodleDev provides a clean visual foundation for production engineering. Instead of using AI to guess at a layout, this project starts with a pixel-perfect, zero-dependency export that is easy to adjust manually. 
 
-In this repository, the menu system, audio playback, and click wheel interaction were built directly onto the DoodleDev export. The resulting codebase is a precision instrument where visual intent and modular logic are perfectly aligned.
+The menu system, audio playback, and click wheel interactions were built directly onto the DoodleDev export across four JavaScript modules:
 
 | Module | Responsibility |
 |---|---|
@@ -22,38 +22,67 @@ In this repository, the menu system, audio playback, and click wheel interaction
 
 ## Features
 
-- **Click Wheel Navigation** — Pointer-driven rotational input with dead zone detection and momentum
-- **Full Menu Hierarchy** — Artists → Albums → Songs with smooth slide transitions
-- **Now Playing Screen** — 3D album art, marquee scrolling for long titles, live progress bar
-- **Shuffle & Repeat** — Fisher-Yates shuffle, repeat one/all modes
-- **Lazy Artwork Loading** — Placeholder shown while album art loads
-- **Responsive** — Scales to any viewport while maintaining aspect ratio
+- **Click Wheel Navigation**: Rotational input with dead zone detection and momentum.
+- **Menu Hierarchy**: Browse by Artist, Album, or Song with slide transitions.
+- **Now Playing**: 3D album art, marquee scrolling for long titles, and live progress bar.
+- **Shuffle & Repeat**: Fisher-Yates shuffle with repeat one/all modes.
+- **Artwork Loading**: Lazy loading with placeholders for cover art.
+- **Responsive Layout**: Scales to any viewport while maintaining aspect ratio.
 
 ## Project Structure
 
 ```
-├── index.html              # Single page entry point
+├── index.html              # Entry point
 ├── css/
-│   ├── global.css          # Reset, background, header/footer
-│   ├── ipod.css            # Shell, wheel, button styles
-│   ├── screen.css          # Status bar, battery, screen layout
-│   ├── menu.css            # Menu items, selection highlight
-│   └── now-playing.css     # Artwork, metadata, progress bar
+│   ├── global.css          # Background, resets, and layout
+│   ├── ipod.css            # Shell and button styling
+│   ├── screen.css          # Status bar and battery
+│   ├── menu.css            # Menu item styling
+│   └── now-playing.css     # Metadata and progress bar
 ├── js/
-│   ├── config.js           # State + menu definitions
-│   ├── ui.js               # Rendering + transitions
-│   ├── controls.js         # Input handling + boot
+│   ├── config.js           # State and menu data
+│   ├── ui.js               # Rendering logic
+│   ├── controls.js         # Input handling
 │   ├── player.js           # Audio engine
-│   └── library.json        # Song library data
+│   └── library.json        # Music library data
 └── public/
-    ├── icons/              # SVG button icons
-    ├── covers/             # Album artwork
-    └── music/              # Audio files
+    ├── icons/              # SVG assets
+    ├── covers/             # Album art
+    └── music/              # MP3 files
 ```
+
+## Customizing the Library
+
+To add your own music, modify `js/library.json` and add your files to the `public/` folder.
+
+### 1. Data Structure
+Each song in `js/library.json` follows this format:
+
+```json
+{
+    "id": 1,
+    "title": "Song Title",
+    "artist": "Artist Name",
+    "album": "Album Name",
+    "src": "public/music/your_file.mp3",
+    "artwork": "public/covers/your_artwork.jpg",
+    "rating": 5
+}
+```
+
+- **src**: Path to the MP3 file.
+- **artwork**: Path to the cover image. Defaults to a placeholder if empty.
+- **rating**: Optional 0-5 value for the rating stars.
+
+### 2. Organization
+- Place audio in `public/music/`.
+- Place images in `public/covers/`.
+
+The application generates menu items automatically based on the JSON. No core code changes are needed to update the music.
 
 ## Running Locally
 
-No build step. Just serve the files:
+Serve the files using a local server:
 
 ```bash
 # Python
@@ -63,22 +92,19 @@ python -m http.server 8000
 npx serve .
 ```
 
-Then open `http://localhost:8000`.
-
-> A local server is required because the app uses ES modules and `fetch()` for the music library, which don't work from `file://`.
+Open `http://localhost:8000`. A server is required for ES modules and the library fetch.
 
 ## Tech Stack
 
-- **HTML/CSS/JS** — Zero frameworks, zero dependencies, zero build tools
-- **ES Modules** — Native browser module system
-- **Web Audio** — Standard `<audio>` element for playback
-- **DoodleDev** — Visual shell design ([doodledev.app](https://doodledev.app))
+- **HTML/CSS/JS**: Vanilla implementation with zero dependencies.
+- **ES Modules**: Native module system.
+- **Web Audio**: Standard audio elements for playback.
+- **DoodleDev**: Visual shell design ([doodledev.app](https://doodledev.app)).
 
 ## Credits
 
 Designed and built by **[Mitch Ivin](https://mitchivin.com/)**.
-
-iPod shell designed in **[DoodleDev](https://doodledev.app)**.
+Shell designed in **[DoodleDev](https://doodledev.app)**.
 
 ## License
 
