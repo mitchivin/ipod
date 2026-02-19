@@ -87,6 +87,7 @@ function processScroll() {
 // ── Pointer Events (Click Wheel) ─────────────────────────────
 
 elements.controlWheel.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
     isDragging = true;
     hasScrolled = false;
     lastMoveTime = Date.now();
