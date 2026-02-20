@@ -9,11 +9,19 @@
 import { library, state, elements } from './config.js';
 import { updateHeaderIcons, renderMenu } from './ui.js';
 
+let playerInitialized = false;
+
 // ── Queue & Playback ─────────────────────────────────────────
 
 export function playQueue(queue, startIndex = 0) {
+    if (!Array.isArray(queue) || queue.length === 0) {
+        state.queue = [];
+        state.currentIndex = -1;
+        return;
+    }
+
     state.queue = queue;
-    state.currentIndex = startIndex;
+    state.currentIndex = Math.max(0, Math.min(startIndex, queue.length - 1));
     playCurrent();
 }
 
@@ -145,6 +153,8 @@ function setupMarquee(elements) {
 // ── Track Navigation ─────────────────────────────────────────
 
 export function nextTrack() {
+    if (!state.queue.length) return;
+
     if (state.shuffle === 'songs' && state.queue.length > 1) {
         let next;
         do {
@@ -158,6 +168,8 @@ export function nextTrack() {
 }
 
 export function prevTrack() {
+    if (!state.queue.length) return;
+
     if (elements.audio.currentTime > 3) {
         elements.audio.currentTime = 0;
     } else if (state.currentIndex > 0) {
@@ -173,7 +185,17 @@ function onTrackEnded() {
     if (state.repeat === 'one') {
         elements.audio.currentTime = 0;
         elements.audio.play().catch(err => console.warn('Replay blocked:', err));
-    } else {
+        return;
+    }
+
+    const atLastTrack = state.currentIndex >= state.queue.length - 1;
+    if (state.repeat !== 'all' && atLastTrack) {
+        elements.audio.pause();
+        updateHeaderIcons();
+        return;
+    }
+
+    if (state.queue.length > 0) {
         nextTrack();
     }
 }
@@ -189,14 +211,20 @@ function formatTime(seconds) {
 
 // ── Audio Event Listeners ────────────────────────────────────
 
-elements.audio.addEventListener('timeupdate', () => {
-    if (!state.isNowPlaying) return;
-    const { currentTime, duration } = elements.audio;
-    elements.progressBar.style.width = `${(currentTime / duration) * 100 || 0}%`;
-    elements.currentTimeLabel.innerText = formatTime(currentTime);
-    elements.remainingTimeLabel.innerText = '-' + formatTime(duration - currentTime);
-});
+export function initPlayer() {
+    if (playerInitialized) return;
 
-elements.audio.addEventListener('ended', onTrackEnded);
-elements.audio.addEventListener('play', updateHeaderIcons);
-elements.audio.addEventListener('pause', updateHeaderIcons);
+    elements.audio.addEventListener('timeupdate', () => {
+        if (!state.isNowPlaying) return;
+        const { currentTime, duration } = elements.audio;
+        elements.progressBar.style.width = `${(currentTime / duration) * 100 || 0}%`;
+        elements.currentTimeLabel.innerText = formatTime(currentTime);
+        elements.remainingTimeLabel.innerText = '-' + formatTime(duration - currentTime);
+    });
+
+    elements.audio.addEventListener('ended', onTrackEnded);
+    elements.audio.addEventListener('play', updateHeaderIcons);
+    elements.audio.addEventListener('pause', updateHeaderIcons);
+
+    playerInitialized = true;
+}

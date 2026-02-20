@@ -5,6 +5,8 @@
  * playback settings, and all DOM references used across modules.
  */
 
+import { elements } from './dom.js';
+
 // ── Library ──────────────────────────────────────────────────
 
 export let library = [];
@@ -86,25 +88,4 @@ export const menus = {
 };
 
 // ── Element Cache ────────────────────────────────────────────
-
-export const elements = {
-    menuView: document.getElementById('menu-view'),
-    menuSlider: document.getElementById('menu-slider'),
-    menuPrimary: document.getElementById('menu-primary'),
-    menuSecondary: document.getElementById('menu-secondary'),
-    headerTitle: document.querySelector('#ipod-header .header-left'),
-    playIcon: document.querySelector('.header-icon-play'),
-    nowPlayingScreen: document.getElementById('now-playing'),
-    audio: document.getElementById('ipod-audio'),
-    progressBar: document.querySelector('.progress-fill'),
-    currentTimeLabel: document.querySelector('.time-label.current'),
-    remainingTimeLabel: document.querySelector('.remaining'),
-    allTimeLabels: document.querySelectorAll('.time-label'),
-    screenContainer: document.getElementById('screen-container'),
-    controlWheel: document.getElementById('control-wheel'),
-    midButton: document.getElementById('mid-button'),
-    menuButton: document.getElementById('menu'),
-    nextButton: document.getElementById('next'),
-    prevButton: document.getElementById('prev'),
-    playPauseButton: document.getElementById('play-pause')
-};
+export { elements };

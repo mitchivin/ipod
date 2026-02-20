@@ -8,7 +8,6 @@
 
 import { library, menus, state, elements } from './config.js';
 import * as player from './player.js';
-import { resetScrollState } from './controls.js';
 
 // ── Dynamic Menu Items ───────────────────────────────────────
 
@@ -44,7 +43,7 @@ function getDynamicItems(key) {
         const albums = [...new Set(songs.map(s => s.album))].sort((a, b) => a.localeCompare(b));
         return [
             { label: 'All Songs', action: () => player.playQueue(songs, 0) },
-            ...albums.map(album => ({ label: album, submenu: `album:${album}` }))
+            ...albums.map(album => ({ label: album, submenu: `artist-album:${name}::${album}` }))
         ];
     }
 
@@ -52,6 +51,17 @@ function getDynamicItems(key) {
     if (key.startsWith('album:')) {
         const name = key.slice(6);
         const songs = library.filter(s => s.album === name);
+        return songs.map((song, idx) => ({
+            label: song.title,
+            action: () => player.playQueue(songs, idx)
+        }));
+    }
+
+    // Artist-specific album detail → track list
+    if (key.startsWith('artist-album:')) {
+        const payload = key.slice('artist-album:'.length);
+        const [artistName, albumName] = payload.split('::');
+        const songs = library.filter(s => s.artist === artistName && s.album === albumName);
         return songs.map((song, idx) => ({
             label: song.title,
             action: () => player.playQueue(songs, idx)
@@ -73,6 +83,11 @@ export function resolveMenu(key) {
     }
     if (key.startsWith('artist:')) return { title: key.slice(7), items: getDynamicItems(key) };
     if (key.startsWith('album:')) return { title: key.slice(6), items: getDynamicItems(key) };
+    if (key.startsWith('artist-album:')) {
+        const payload = key.slice('artist-album:'.length);
+        const [, albumName] = payload.split('::');
+        return { title: albumName || 'Album', items: getDynamicItems(key) };
+    }
     return { title: key, items: [] };
 }
 
@@ -127,7 +142,6 @@ export function renderMenu(targetPane) {
 // ── Menu Transitions ─────────────────────────────────────────
 
 export function switchMenu(newMenuKey, direction = 'forward', targetIndex = 0) {
-    resetScrollState();
     elements.menuSlider.style.transition = 'none';
 
     if (direction === 'forward') {
