@@ -13,7 +13,6 @@ function isDevEnvironment() {
 }
 
 function setupDevChromeToggle() {
-    if (!isDevEnvironment()) return;
 
     window.addEventListener('keydown', (e) => {
         const target = e.target;
