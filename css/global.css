@@ -9,6 +9,7 @@
     -webkit-user-drag: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 html {
@@ -34,7 +35,25 @@ body {
     align-items: center;
     font-family: 'Source Sans 3', sans-serif;
     position: relative;
-    touch-action: none;
+}
+
+/* ── Cutting Mat Theme (Toggled) ────────────────────────── */
+body.bg-cutting-mat {
+    background:
+        /* Top sheen & Ambient glows */
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.03), transparent 70%),
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(34, 197, 94, 0.12), transparent 85%),
+        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(34, 197, 94, 0.12), transparent 85%),
+        /* Major Precision Grid (100px) - Bolder for visibility */
+        linear-gradient(rgba(134, 239, 172, 0.2) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(134, 239, 172, 0.2) 2px, transparent 2px),
+        /* Minor Precision Grid (10px) - Higher contrast */
+        linear-gradient(rgba(134, 239, 172, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(134, 239, 172, 0.08) 1px, transparent 1px),
+        /* Forest Green Cutting Mat Base */
+        linear-gradient(180deg, #082c1a 0%, #04150d 100%);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100px 100px, 100px 100px, 10px 10px, 10px 10px, 100% 100%;
+    background-position: center center;
 }
 
 /* ── Background Ambience ──────────────────────────────────── */
@@ -48,6 +67,11 @@ body::before {
     background:
         radial-gradient(ellipse 42% 58% at 2% 50%, rgba(34, 197, 94, 0.08), transparent 76%),
         radial-gradient(ellipse 42% 58% at 98% 50%, rgba(16, 185, 129, 0.08), transparent 76%);
+    transition: opacity 0.3s ease;
+}
+
+body.bg-cutting-mat::before {
+    opacity: 0;
 }
 
 /* ── iPod Container ───────────────────────────────────────── */
@@ -153,6 +177,10 @@ body.app-loading #app-shell-loader {
     --u: calc(var(--base-width) / 371);
 }
 
+#control-wheel {
+    touch-action: none;
+}
+
 /* ── DoodleDev Shell Primitives ───────────────────────────── */
 
 .item {
@@ -165,7 +193,6 @@ body.app-loading #app-shell-loader {
 .item.interactive {
     pointer-events: auto;
     cursor: pointer;
-    touch-action: none;
     transition: transform 0.05s ease-in-out, filter 0.05s ease-in-out;
     will-change: transform;
 }

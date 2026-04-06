@@ -6,6 +6,7 @@ import './components/IpodDesign.js';
 import { initDom } from './dom.js';
 import { initPlayer } from './player.js';
 import { initControls } from './controls.js';
+import { initZoomPrevention } from './zoomPrevention.js';
 
 function isDevEnvironment() {
     const host = window.location.hostname;
@@ -26,6 +27,11 @@ function setupDevChromeToggle() {
         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'h') {
             e.preventDefault();
             document.body.classList.toggle('dev-chrome-hidden');
+        }
+
+        if (e.ctrlKey && e.shiftKey && e.key === 'ArrowLeft') {
+            e.preventDefault();
+            document.body.classList.toggle('bg-cutting-mat');
         }
     });
 }
@@ -67,6 +73,7 @@ async function bootstrap() {
     await customElements.whenDefined('ipod-design');
     await new Promise((resolve) => requestAnimationFrame(resolve));
 
+    initZoomPrevention();
     setupDevChromeToggle();
     assertDomReady();
     initPlayer();

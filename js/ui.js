@@ -117,7 +117,7 @@ function getVisibleCount(pane) {
     }
 
     if (!cachedNaturalItemHeight) return DEFAULT_MAX_VISIBLE;
-    
+
     return Math.max(1, Math.round(paneHeight / cachedNaturalItemHeight));
 }
 
@@ -162,7 +162,7 @@ export function renderMenu(targetPane) {
         div.className = 'menu-item'
             + (realIndex === state.selectedIndex ? ' selected' : '')
             + (item.disabled ? ' disabled' : '');
-        
+
         if (itemHeight) div.style.height = `${itemHeight}px`;
 
         let right = '';

@@ -1,14 +1,8 @@
-# Interactive iPod Classic
+# iPod
 
-<img width="1400" height="910" alt="gitipod3" src="https://github.com/user-attachments/assets/930fcecd-a967-4ebc-b521-5aa4bad7f893" />
+Interactive iPod 5th Generation for the web. Use the click wheel to browse your library and play tracks with zero dependencies.
 
----
-
-### [Launch iPod](https://mitchivin.github.io/ipod/)
-
----
-
-Interactive iPod Classic 5th Generation for the web. Use the click wheel to browse your library and play tracks with zero dependencies.
+**[▶ Try it live](https://mitchivin.github.io/ipod/)**
 
 ## Overview
 
@@ -17,13 +11,16 @@ The iPod shell (aluminium body, click wheel, screen bezel, and button icons) was
 ### Design and Logic
 DoodleDev provides a clean visual foundation for production engineering. Instead of using AI to guess at a layout, this project starts with a pixel-perfect, zero-dependency export that is easy to adjust manually. 
 
-The menu system, audio playback, and click wheel interactions were built directly onto the DoodleDev export across four JavaScript modules:
+The menu system, audio playback, and click wheel interactions were built directly onto the DoodleDev export and now boot through a modular runtime:
 
 | Module | Responsibility |
 |---|---|
+| `main.js` | Startup orchestration, DOM readiness, dev chrome toggle |
+| `components/IpodDesign.js` | iPod shell/component markup mount |
+| `dom.js` | Centralized DOM cache initialization |
 | `config.js` | Application state, menu structure, element cache |
 | `ui.js` | Menu rendering, slide transitions, dynamic lists |
-| `controls.js` | Click wheel input, button binding, boot sequence |
+| `controls.js` | Click wheel input and button binding |
 | `player.js` | Queue management, playback, shuffle, progress bar |
 
 ## Features
@@ -34,8 +31,6 @@ The menu system, audio playback, and click wheel interactions were built directl
 - **Shuffle & Repeat**: Fisher-Yates shuffle with repeat one/all modes.
 - **Artwork Loading**: Lazy loading with placeholders for cover art.
 - **Responsive Layout**: Scales to any viewport while maintaining aspect ratio.
-
-<img width="1400" height="910" alt="gitipod2" src="https://github.com/user-attachments/assets/3b2b86ad-ddf7-4db9-b9ef-f9ff9073ea14" />
 
 ## Project Structure
 
@@ -48,10 +43,14 @@ The menu system, audio playback, and click wheel interactions were built directl
 │   ├── menu.css            # Menu item styling
 │   └── now-playing.css     # Metadata and progress bar
 ├── js/
+│   ├── main.js             # Startup/bootstrap orchestration
+│   ├── dom.js              # DOM reference initialization
 │   ├── config.js           # State and menu data
 │   ├── ui.js               # Rendering logic
 │   ├── controls.js         # Input handling
 │   ├── player.js           # Audio engine
+│   ├── components/
+│   │   └── IpodDesign.js   # iPod shell component
 │   └── library.json        # Music library data
 └── public/
     ├── icons/              # SVG assets
